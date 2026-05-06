@@ -1,0 +1,12 @@
+{
+  "name": "admate-docs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AdMate central strategy docs and harness checks",
+  "scripts": {
+    "check:docs": "node scripts/check-doc-index.mjs",
+    "check:skills": "node scripts/check-skill-catalog.mjs",
+    "check:harness": "node scripts/check-repo-harness-coverage.mjs",
+    "verify:harness": "npm run check:docs && npm run check:skills && npm run check:harness"
+  }
+}

@@ -1,0 +1,44 @@
+# Dependencies / build outputs
+node_modules/
+.next/
+dist/
+build/
+coverage/
+
+# Local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*
+*secrets*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Large / binary assets
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.mp4
+*.mov
+*.wav
+*.mp3
+*.zip
+*.7z
+*.tar
+*.gz
+
+# Generated / local artifacts
+*.log
+*.tmp
+test-results/
+downloads/
