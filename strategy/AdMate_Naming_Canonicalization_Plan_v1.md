@@ -360,4 +360,3 @@ Proceed in this order:
 8. Rename Openclaw/Sentinel repo/project only after a dedicated Agent Core naming review.
 
 The most important decision is to treat `admate-agent-core` as the canonical technical name for the Openclaw/Hermes/Sentinel/Auth/Intelligence backend repo, while keeping the public-facing product name `AdMate Sentinel` for the monitoring/validation surface.
-
