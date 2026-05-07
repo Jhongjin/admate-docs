@@ -470,3 +470,79 @@ Follow-up:
 - Open Codex projects from the new `D:\Projects\AdMate\...` paths.
 - Do not delete `D:\Projects\admate-docs` or `D:\Projects\admate-capture-pro` until the user manually confirms the new paths are working.
 - Rename Lens GitHub remote/project references in a later Lens rename gate.
+
+### 2026-05-07 - Rename-5 Low-Risk Local Remote And Vercel Metadata Sync
+
+Operator action: aligned local remotes and local Vercel project metadata where the external names are already canonical.
+
+Completed:
+
+- `D:\Projects\AdMate\admate-design-director`
+  - local `origin` updated to `https://github.com/Jhongjin/admate-design-director.git`
+- `D:\Projects\AdMate\admate-compass`
+  - local `origin` updated to `https://github.com/Jhongjin/admate-compass.git`
+  - local `.vercel/project.json` project name updated to `admate-compass`
+  - Vercel production inspect for `https://compass.admate.ai.kr` returns project `admate-compass`, target `production`, status `Ready`
+- `D:\Projects\AdMate\admate-lens`
+  - local `.vercel/project.json` project name updated to `admate-lens`
+  - Vercel production inspect for `https://lens.admate.ai.kr` returns project `admate-lens`, target `production`, status `Ready`
+
+Intentionally not changed:
+
+- Lens local `origin` still points to `https://github.com/Jhongjin/admate-capture-pro.git` because `https://github.com/Jhongjin/admate-lens.git` was not confirmed as an available repo at this time.
+- Lens Vercel project still has legacy default alias `admate-capture-pro.vercel.app`; this does not affect `lens.admate.ai.kr`.
+- Agent Core/Openclaw was not renamed in this gate.
+
+Follow-up:
+
+- Complete Lens GitHub rename only after `Jhongjin/admate-lens` exists or the existing repo is renamed in GitHub.
+- Complete Agent Core rename after a dedicated readiness review.
+
+### 2026-05-07 - Rename-6 Post-Rename Verification
+
+Operator action: user completed additional GitHub/Vercel rename work for Lens, Agent Core, Foresight, and Sentinel legacy where applicable. Local remotes and local Vercel metadata were then aligned from the new `D:\Projects\AdMate` root.
+
+Local canonical folders:
+
+- `D:\Projects\AdMate\admate-docs`
+- `D:\Projects\AdMate\admate-homepage`
+- `D:\Projects\AdMate\admate-compass`
+- `D:\Projects\AdMate\admate-lens`
+- `D:\Projects\AdMate\admate-agent-core`
+- `D:\Projects\AdMate\admate-foresight`
+- `D:\Projects\AdMate\admate-creative-studio`
+- `D:\Projects\AdMate\admate-design-director`
+- `D:\Projects\AdMate\admate-sentinel-legacy`
+
+Local Git remotes aligned:
+
+- `admate-design-director` -> `https://github.com/Jhongjin/admate-design-director.git`
+- `admate-creative-studio` -> `https://github.com/Jhongjin/admate-creative-studio.git`
+- `admate-compass` -> `https://github.com/Jhongjin/admate-compass.git`
+- `admate-lens` -> `https://github.com/Jhongjin/admate-lens.git`
+- `admate-foresight` -> `https://github.com/Jhongjin/admate-foresight.git`
+- `admate-sentinel-legacy` -> `https://github.com/Jhongjin/admate-sentinel-legacy.git`
+- `admate-agent-core` -> `https://github.com/Jhongjin/admate-agent-core.git`
+
+Local Vercel metadata aligned:
+
+- `admate-homepage` keeps project name `admate-homepage`
+- `admate-compass` keeps project ID `prj_P42AQ4WX2hJgMMdeRqksqY0fHPWc` and local project name `admate-compass`
+- `admate-lens` keeps project ID `prj_cAd0JHyVm4IBhM2Q0pE4LxesVbZ7` and local project name `admate-lens`
+- `admate-agent-core` keeps project ID `prj_YXJEMYIvfGSXK0ovjEnNpz5NnS3h` and local project name `admate-agent-core`
+
+Production smoke:
+
+- `https://home.admate.ai.kr` returns HTTP 200
+- `https://compass.admate.ai.kr` returns HTTP 200
+- `https://lens.admate.ai.kr` returns HTTP 200
+- `https://sentinel.admate.ai.kr` returns HTTP 200
+
+Remaining Vercel dashboard/API follow-up:
+
+- Vercel project `admate-compass` still reports linked Git repo `Jhongjin-admate-guide-codex`.
+- Vercel project `admate-lens` still reports linked Git repo `admate-capture-pro`.
+- Vercel project `admate-agent-core` still reports linked Git repo `openclaw-monitor`.
+- These may be stale GitHub integration labels or redirects, but the safer final state is to reconnect each Vercel project to the canonical GitHub repo in the Vercel dashboard and verify the next production deployment.
+
+No immediate production outage was observed.
