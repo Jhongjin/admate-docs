@@ -16,6 +16,28 @@
 
 - strategy/15_AdMate_Command_Center_Executive_Dashboard_PRD_v1.md
 
+## Canonical Repo Map
+
+| Product Area | Local Path | GitHub |
+|---|---|---|
+| Docs / Command Center | `D:\Projects\AdMate\admate-docs` | `Jhongjin/admate-docs` |
+| Homepage | `D:\Projects\AdMate\admate-homepage` | `Jhongjin/admate-homepage` |
+| Compass | `D:\Projects\AdMate\admate-compass` | `Jhongjin/admate-compass` |
+| Lens | `D:\Projects\AdMate\admate-lens` | `Jhongjin/admate-lens` |
+| Agent Core / Sentinel | `D:\Projects\AdMate\admate-agent-core` | `Jhongjin/admate-agent-core` |
+| Foresight | `D:\Projects\AdMate\admate-foresight` | `Jhongjin/admate-foresight` |
+| Creative Studio | `D:\Projects\AdMate\admate-creative-studio` | `Jhongjin/admate-creative-studio` |
+| Design Director | `D:\Projects\AdMate\admate-design-director` | `Jhongjin/admate-design-director` |
+| Sentinel Legacy | `D:\Projects\AdMate\admate-sentinel-legacy` | `Jhongjin/admate-sentinel-legacy` |
+
+Supabase main shared data project display name is `AdMate-Data-Core`. This is a display-name convention only; project ref, API URL, credentials, schemas, and data must not be changed by documentation cleanup work.
+
+## Remaining Naming Follow-up
+
+- Vercel Git linked repo labels for Compass, Lens, and Agent Core may still show historical repository names. Treat this as a follow-up verification/reconnection task, not a docs cleanup action.
+- Keep historical task/result documents and `archive/` originals unchanged, even when they contain old paths or old product names.
+- Keep `.obsidian/` as local vault settings. Do not stage or commit it unless explicitly requested in a later gate.
+
 ## Access / Roles
 
 - strategy/17_AdMate_User_Access_Roles_and_Approval_Model_v1.md

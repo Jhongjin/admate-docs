@@ -29,13 +29,13 @@ AdMate의 장기 목표는 나스미디어의 광고 운영 지식을 AI Agent�
 
 AdMate는 4개 제품 플랫폼과 하나의 Agent Core로 구성된다.
 
-| 최종명 | 기존/내부명 | 역할 |
+| 최종명 | canonical repo / 내부 엔진 | 역할 |
 |---|---|---|
-| AdMate Compass | AdMate Guide | 광고 플랫폼 정책/가이드 기반 RAG 챗봇, Policy Intelligence Agent |
-| AdMate Sentinel | Sentinel beta + Openclaw Sentinel 영역 | 캠페인 시작 전 세팅 검수 + 집행 후 실시간 모니터링/알림 |
-| AdMate Lens | AdMate Capture Pro | 광고 게재 화면과 보고서 증빙 이미지 자동 생성 |
-| AdMate Foresight | AdMate Planner | 과거 광고 데이터 기반 캠페인 성과 예측/미디어 플래닝 |
-| AdMate Agent Core | Openclaw + Hermes | 지능, 자동화, 실행, 기억, 학습, 감사 로그 공통 레이어 |
+| AdMate Compass | `admate-compass` | 광고 플랫폼 정책/가이드 기반 RAG 챗봇, Policy Intelligence Agent |
+| AdMate Sentinel | `admate-agent-core` Sentinel surface | 캠페인 시작 전 세팅 검수 + 집행 후 실시간 모니터링/알림 |
+| AdMate Lens | `admate-lens` | 광고 게재 화면과 보고서 증빙 이미지 자동 생성 |
+| AdMate Foresight | `admate-foresight` | 과거 광고 데이터 기반 캠페인 성과 예측/미디어 플래닝 |
+| AdMate Agent Core | `admate-agent-core` / Openclaw + Hermes | 지능, 자동화, 실행, 기억, 학습, 감사 로그 공통 레이어 |
 
 핵심 한 문장:
 
@@ -443,21 +443,31 @@ AdMate는 미디어플래너를 대체하는 도구가 아니라,
 로컬 기준:
 
 ```text
-C:\Users\Administrator\projects\
-├─ openclaw-monitor
-├─ admate-capture-pro
-├─ Jhongjin-admate-guide-codex
-└─ admate-homepage
+D:\Projects\AdMate\
+├─ admate-docs
+├─ admate-homepage
+├─ admate-compass
+├─ admate-lens
+├─ admate-agent-core
+├─ admate-foresight
+├─ admate-creative-studio
+├─ admate-design-director
+└─ admate-sentinel-legacy
 ```
 
 역할:
 
-| repo | 역할 |
-|---|---|
-| openclaw-monitor | AdMate Agent Core / Openclaw / Hermes / Sentinel Live Monitoring 중심 |
-| admate-capture-pro | AdMate Lens, 캡처/증빙 자동화 |
-| Jhongjin-admate-guide-codex | AdMate Compass, 정책/가이드 RAG |
-| admate-homepage | AdMate 대표 홈페이지 |
+| repo | GitHub | 역할 |
+|---|---|---|
+| admate-docs | Jhongjin/admate-docs | AdMate 중앙 전략/기획/인수인계 문서, Obsidian vault |
+| admate-homepage | Jhongjin/admate-homepage | AdMate 대표 홈페이지 |
+| admate-compass | Jhongjin/admate-compass | AdMate Compass, 정책/가이드 RAG |
+| admate-lens | Jhongjin/admate-lens | AdMate Lens, 캡처/증빙 자동화 |
+| admate-agent-core | Jhongjin/admate-agent-core | AdMate Agent Core / Openclaw / Hermes / Sentinel Live Monitoring 중심 |
+| admate-foresight | Jhongjin/admate-foresight | AdMate Foresight, 미디어 플래닝/성과 예측 |
+| admate-creative-studio | Jhongjin/admate-creative-studio | AdMate Creative Studio |
+| admate-design-director | Jhongjin/admate-design-director | AdMate Design Director |
+| admate-sentinel-legacy | Jhongjin/admate-sentinel-legacy | Sentinel legacy 보존/참조 repo |
 
 ---
 
@@ -481,9 +491,9 @@ C:\Users\Administrator\projects\
 
 ## 15. repo별 첫 프롬프트 요약
 
-### openclaw-monitor
+### admate-agent-core
 
-역할: Openclaw/Sentinel/Agent Core 개발 Agent
+역할: AdMate Agent Core / Openclaw / Hermes / Sentinel 개발 Agent
 
 먼저 읽을 것:
 
@@ -505,7 +515,7 @@ C:\Users\Administrator\projects\
 - 위험 요소
 - 다음 작업 계획
 
-### admate-capture-pro
+### admate-lens
 
 역할: AdMate Lens 개발 Agent
 
@@ -612,10 +622,14 @@ docs/design/openclaw-theme-reference.md
 
 각 repo에 repo별 AGENTS.md를 둔다.
 
-- openclaw-monitor/AGENTS.md
-- admate-capture-pro/AGENTS.md
+- admate-agent-core/AGENTS.md
+- admate-lens/AGENTS.md
 - admate-homepage/AGENTS.md
-- Jhongjin-admate-guide-codex/AGENTS.md
+- admate-compass/AGENTS.md
+- admate-foresight/AGENTS.md
+- admate-creative-studio/AGENTS.md
+- admate-design-director/AGENTS.md
+- admate-sentinel-legacy/AGENTS.md
 
 ### 2단계: 공통 전략 문서를 docs/strategy에 저장
 

@@ -2,7 +2,7 @@
 
 작성일: 2026-05-01  
 문서 상태: 초안 v1  
-작성 목적: AdMate 전략 문서, 디자인 기준, Codex/Paperclip 작업 지침을 각 GitHub repo와 로컬 작업 폴더에 안전하게 반영하기 위한 운영 가이드. 본 문서는 Openclaw Monitor, AdMate Compass/Guide, AdMate Lens/Capture Pro, 향후 Sentinel/Foresight repo를 Codex Desktop 또는 개발 Agent와 연결할 때 기준으로 사용한다.
+작성 목적: AdMate 전략 문서, 디자인 기준, Codex/Paperclip 작업 지침을 각 GitHub repo와 로컬 작업 폴더에 안전하게 반영하기 위한 운영 가이드. 본 문서는 AdMate Agent Core, AdMate Compass, AdMate Lens, AdMate Homepage, AdMate Foresight 등 canonical repo를 Codex Desktop 또는 개발 Agent와 연결할 때 기준으로 사용한다.
 
 ---
 
@@ -12,13 +12,14 @@ AdMate는 단일 repo가 아니라 여러 제품 repo와 하나의 Agent Core로
 
 현재 또는 향후 연결 대상은 다음과 같다.
 
-| AdMate 브랜드명 | 기존/개발 repo 성격 | 역할 |
+| AdMate 브랜드명 | canonical repo | 역할 |
 |---|---|---|
-| AdMate Agent Core | openclaw-monitor | Openclaw/Hermes 기반 실행, 학습, 알림, 운영 콘솔 |
-| AdMate Compass | admate-guide 또는 admate-guide-codex | 광고 정책/가이드 RAG 챗봇 |
-| AdMate Lens | admate-capture-pro | 광고 캡처/증빙 자동화 |
-| AdMate Sentinel | openclaw-monitor + 향후 pre-launch validation 영역 | 사전 검수 + 실시간 모니터링 |
-| AdMate Foresight | 향후 신규 repo 또는 existing planning PoC | 미디어 플래닝 예측/시뮬레이션 |
+| AdMate Docs / Command Center | admate-docs | 중앙 전략/기획/인수인계 문서, Obsidian vault |
+| AdMate Agent Core | admate-agent-core | Openclaw/Hermes 기반 실행, 학습, 알림, 운영 콘솔 |
+| AdMate Compass | admate-compass | 광고 정책/가이드 RAG 챗봇 |
+| AdMate Lens | admate-lens | 광고 캡처/증빙 자동화 |
+| AdMate Sentinel | admate-agent-core Sentinel surface | 사전 검수 + 실시간 모니터링 |
+| AdMate Foresight | admate-foresight | 미디어 플래닝 예측/시뮬레이션 |
 
 Codex나 Paperclip 같은 개발 Agent에게 작업을 맡길 때 가장 중요한 것은 다음이다.
 
@@ -51,13 +52,16 @@ Codex나 Paperclip 같은 개발 Agent에게 작업을 맡길 때 가장 중요�
 Windows PC 기준 권장 구조:
 
 ```text
-C:\Users\<USER>\projects\
-├─ openclaw-monitor\
-├─ admate-guide-codex\
-├─ admate-capture-pro\
-├─ admate-foresight\              # 향후 생성 가능
-├─ admate-docs\                   # 공통 전략 문서 보관용
-└─ admate-shared-assets\           # 디자인 기준/브랜드 자료/이미지 자료
+D:\Projects\AdMate\
+├─ admate-docs\                   # 중앙 전략 문서 / Obsidian vault
+├─ admate-homepage\
+├─ admate-compass\
+├─ admate-lens\
+├─ admate-agent-core\
+├─ admate-foresight\
+├─ admate-creative-studio\
+├─ admate-design-director\
+└─ admate-sentinel-legacy\
 ```
 
 repo별로 각각 Codex 프로젝트를 만들 수 있다.
@@ -65,11 +69,12 @@ repo별로 각각 Codex 프로젝트를 만들 수 있다.
 권장 Codex 프로젝트명:
 
 ```text
-Openclaw Sentinel
+AdMate Docs / Command Center
+AdMate Agent Core
 AdMate Compass
 AdMate Lens
 AdMate Foresight
-AdMate Strategy Docs
+AdMate Homepage
 ```
 
 여러 프로젝트를 동시에 운용해도 된다. 단, 한 Codex 작업창에서 여러 repo를 동시에 크게 수정하는 것은 피한다. repo별 작업 목적을 분리해야 변경 이력과 책임 범위가 명확해진다.
@@ -95,8 +100,8 @@ git version 2.54.0.windows.1
 ## 4.2 clone 기본 명령
 
 ```powershell
-cd $HOME\projects
-git clone https://github.com/Jhongjin/openclaw-monitor.git
+cd D:\Projects\AdMate
+git clone https://github.com/Jhongjin/admate-agent-core.git
 ```
 
 repo 접근 권한이 필요한 private repo는 브라우저 인증이 필요할 수 있다.
@@ -104,7 +109,7 @@ repo 접근 권한이 필요한 private repo는 브라우저 인증이 필요할
 ## 4.3 clone 후 확인
 
 ```powershell
-cd $HOME\projects\openclaw-monitor
+cd D:\Projects\AdMate\admate-agent-core
 git status --short --branch
 git --no-pager log --oneline -5
 ```
@@ -123,19 +128,19 @@ ba386e2 Add Codex handoff document
 이미 repo 안에 들어가 있는 상태에서 같은 repo를 다시 clone하면 다음처럼 중첩 폴더가 생길 수 있다.
 
 ```text
-/root/openclaw-monitor/openclaw-monitor
+D:\Projects\AdMate\admate-agent-core\admate-agent-core
 ```
 
 중첩 clone은 혼란을 만들기 때문에 제거한다.
 
 ```bash
-rm -rf /root/openclaw-monitor/openclaw-monitor
+rm -rf ./admate-agent-core/admate-agent-core
 ```
 
 Windows PowerShell에서는:
 
 ```powershell
-Remove-Item -Recurse -Force .\openclaw-monitor\openclaw-monitor
+Remove-Item -Recurse -Force .\admate-agent-core\admate-agent-core
 ```
 
 ---
@@ -183,7 +188,7 @@ AdMate 공통 전략 문서는 각 repo에 그대로 모두 복사할 필요는 
 
 ## 6.1 repo별 권장 문서 배치
 
-### openclaw-monitor
+### admate-agent-core
 
 ```text
 docs/strategy/
@@ -196,7 +201,7 @@ docs/strategy/
 AGENTS.md
 ```
 
-### admate-guide-codex / Compass
+### admate-compass
 
 ```text
 docs/strategy/
@@ -210,7 +215,7 @@ docs/design/
 AGENTS.md 또는 CODEX.md
 ```
 
-### admate-capture-pro / Lens
+### admate-lens
 
 ```text
 docs/strategy/
@@ -276,7 +281,7 @@ API/데이터 구조 변경 금지
 캡처 결과물/광고 미리보기/외부 플랫폼 픽셀 매칭 UI 임의 변경 금지
 ```
 
-특히 Lens/Capture Pro에서는 캡처 결과물 자체를 AdMate 테마로 바꾸면 안 된다. 실제 플랫폼 화면과의 일치가 중요하기 때문이다.
+특히 Lens에서는 캡처 결과물 자체를 AdMate 테마로 바꾸면 안 된다. 실제 플랫폼 화면과의 일치가 중요하기 때문이다.
 
 ---
 
@@ -454,7 +459,7 @@ Codex가 처음 repo를 열면 다음을 시킨다.
 
 ## 11. repo별 작업 지침
 
-## 11.1 openclaw-monitor / Agent Core & Sentinel
+## 11.1 admate-agent-core / Agent Core & Sentinel
 
 역할:
 
@@ -481,7 +486,7 @@ AGENTS.md와 docs/tasks, docs/strategy 문서를 읽고 현재 Openclaw/Hermes/S
 아직 수정하지 마.
 ```
 
-## 11.2 admate-guide-codex / Compass
+## 11.2 admate-compass / Compass
 
 역할:
 
@@ -506,7 +511,7 @@ README와 docs/design/openclaw-theme-reference.md를 읽고,
 기능은 건드리지 않고 UI/UX를 AdMate/Openclaw 테마에 맞출 수 있는 범위를 분석해줘.
 ```
 
-## 11.3 admate-capture-pro / Lens
+## 11.3 admate-lens / Lens
 
 역할:
 
@@ -680,7 +685,7 @@ AdMate 제품군 UI/UX 통합은 한 번에 전체를 바꾸지 않는다.
 7. 실제 결과물/렌더링 영역은 기능 검증 후 매우 신중히 조정
 ```
 
-Lens/Capture Pro에서는 특히 다음을 구분한다.
+Lens에서는 특히 다음을 구분한다.
 
 ```text
 운영자 UI

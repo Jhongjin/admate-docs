@@ -4,6 +4,14 @@
 
 AdMate는 나스미디어 데이터분석팀이 구축하는 AI Agent 기반 광고 운영 자동화 플랫폼이다.
 
+Canonical local 기준:
+
+```text
+D:\Projects\AdMate\admate-docs
+```
+
+이 경로가 AdMate 중앙 문서 repo이자 Obsidian vault 기준이다. 예전 `C:\` 경로나 루트 밖의 중복 문서 폴더는 사용하지 않는다.
+
 제품군:
 
 - AdMate Compass: 광고 정책/가이드 RAG
@@ -14,7 +22,8 @@ AdMate는 나스미디어 데이터분석팀이 구축하는 AI Agent 기반 광
 
 ## 폴더 구조
 
-admate-docs/
+```text
+D:\Projects\AdMate\admate-docs\
 - AGENTS.md
 - README.md
 - INDEX.md
@@ -24,6 +33,7 @@ admate-docs/
 - prompts/
 - repo-guides/
 - working-notes/
+```
 
 ## 사용 원칙
 

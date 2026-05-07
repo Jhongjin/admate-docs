@@ -80,230 +80,100 @@ Avoid names that preserve old product names:
 
 ## 3. Current Inventory
 
-Snapshot source: local `D:\Projects` inventory, local `.vercel/project.json`, Git remotes, and Vercel read-only project inspection on 2026-05-07.
+Snapshot source: local `D:\Projects\AdMate` inventory, local `.vercel/project.json`, Git remotes, and Vercel read-only project inspection on 2026-05-07.
 
 ### 3.1 Local And GitHub
 
-| Product Area | Current Local Folder | Current GitHub Remote | Current Branch | Target Local Folder | Target GitHub Repo |
-|---|---|---|---|---|---|
-| Docs | `D:\Projects\admate-docs` | `Jhongjin/admate-docs` | `main` | `D:\Projects\admate-docs` | `Jhongjin/admate-docs` |
-| Homepage | `D:\Projects\admate-homepage` | `Jhongjin/admate-homepage` | `main` | `D:\Projects\admate-homepage` | `Jhongjin/admate-homepage` |
-| Compass | `D:\Projects\Jhongjin-admate-guide-codex` | `Jhongjin/Jhongjin-admate-guide-codex` | `main` | `D:\Projects\admate-compass` | `Jhongjin/admate-compass` |
-| Lens | `D:\Projects\admate-capture-pro` | `Jhongjin/admate-capture-pro` | `codex/youtube-instream-skip-timing` | `D:\Projects\admate-lens` | `Jhongjin/admate-lens` |
-| Agent Core / Sentinel | `D:\Projects\openclaw-monitor` | `Jhongjin/openclaw-monitor` | `main` | `D:\Projects\admate-agent-core` | `Jhongjin/admate-agent-core` |
-| Foresight | `D:\Projects\AdMate Foresight` | `Jhongjin/admate-foresight` | `main` | `D:\Projects\admate-foresight` | `Jhongjin/admate-foresight` |
-| Ad-Sentinel legacy | `D:\Projects\Ad-Sentinel` | `Jhongjin/AdMate-Sentinel` | `main` | `D:\Projects\admate-sentinel-legacy` | `Jhongjin/admate-sentinel-legacy` |
-| Creative Studio | `D:\Projects\AdMate Creative Studio Agent` | `Jhongjin/admate-creative-studio` | `main` | `D:\Projects\admate-creative-studio` | `Jhongjin/admate-creative-studio` |
-| Design Director | `D:\Projects\Design Director Agent` | `Jhongjin/Design-Director-Agent` | `main` | `D:\Projects\admate-design-director` | `Jhongjin/admate-design-director` |
-
-Notes:
-
-- `admate-docs` already matches the target name.
-- `admate-homepage` already matches the target name.
-- `admate-foresight` GitHub remote already matches the target name, but local folder still has spaces and title case.
-- `admate-capture-pro` is currently on a non-main branch. Do not rename this local folder until branch state is confirmed and either merged, preserved, or intentionally left as-is.
-- `Ad-Sentinel` should be treated as legacy until its relationship to `admate-agent-core` is finalized.
+| Product Area | Canonical Local Folder | Canonical GitHub Repo | Status |
+|---|---|---|---|
+| Docs / Command Center | `D:\Projects\AdMate\admate-docs` | `Jhongjin/admate-docs` | Canonical. Also the Obsidian vault root. |
+| Homepage | `D:\Projects\AdMate\admate-homepage` | `Jhongjin/admate-homepage` | Canonical. |
+| Compass | `D:\Projects\AdMate\admate-compass` | `Jhongjin/admate-compass` | Canonical local/Git name. |
+| Lens | `D:\Projects\AdMate\admate-lens` | `Jhongjin/admate-lens` | Canonical local/Git name. |
+| Agent Core / Sentinel | `D:\Projects\AdMate\admate-agent-core` | `Jhongjin/admate-agent-core` | Canonical technical repo for Openclaw/Hermes/Sentinel surfaces. |
+| Foresight | `D:\Projects\AdMate\admate-foresight` | `Jhongjin/admate-foresight` | Canonical local/Git name. |
+| Creative Studio | `D:\Projects\AdMate\admate-creative-studio` | `Jhongjin/admate-creative-studio` | Canonical local/Git name. |
+| Design Director | `D:\Projects\AdMate\admate-design-director` | `Jhongjin/admate-design-director` | Canonical local/Git name. |
+| Sentinel Legacy | `D:\Projects\AdMate\admate-sentinel-legacy` | `Jhongjin/admate-sentinel-legacy` | Legacy preservation repo. Do not treat as active Agent Core. |
 
 ### 3.2 Vercel
 
-| Product Area | Current Vercel Project | Current Production Domain | Current GitHub Repo Link | Target Vercel Project | Status |
-|---|---|---|---|---|---|
-| Homepage | `admate-homepage` | `home.admate.ai.kr` | `admate-homepage` | `admate-homepage` | Canonical. Duplicate `admate-homepage-al13` can be removed after final check. |
-| Compass | `admate-compass` | `compass.admate.ai.kr` | `Jhongjin-admate-guide-codex` | `admate-compass` | Project name already canonical; GitHub/local still need rename. |
-| Lens | `admate-lens` | `lens.admate.ai.kr` | `admate-capture-pro` | `admate-lens` | Project name already canonical; GitHub/local still need rename. |
-| Agent Core / Sentinel | `openclaw-monitor` | `sentinel.admate.ai.kr` | `openclaw-monitor` | `admate-agent-core` | Rename only after explicit approval because user-facing domain is Sentinel but repo role is Agent Core. |
-| Foresight | `admate-foresight` | none confirmed | `admateplanner` | `admate-foresight` | Needs repo linkage review before rename. |
-| Legacy Guide | `admate-guide` | `guide.admate.ai.kr` | `admate-guide` | archive or legacy | Keep until Compass replacement/redirect plan is confirmed. |
+| Product Area | Canonical Vercel Project | Production Domain | Status |
+|---|---|---|---|
+| Homepage | `admate-homepage` | `home.admate.ai.kr` | Canonical. Duplicate homepage project was retired. |
+| Compass | `admate-compass` | `compass.admate.ai.kr` | Project/domain canonical. Git linked repo label still needs dashboard verification. |
+| Lens | `admate-lens` | `lens.admate.ai.kr` | Project/domain canonical. Git linked repo label still needs dashboard verification. |
+| Agent Core / Sentinel | `admate-agent-core` | `sentinel.admate.ai.kr` | Project/domain canonical. Git linked repo label still needs dashboard verification. |
+| Foresight | `admate-foresight` | none confirmed | Project name canonical; repo linkage should be reviewed before production dependency. |
 
-Homepage duplicate cleanup state:
+Remaining Vercel follow-up:
 
-- `home.admate.ai.kr` has been moved to `admate-homepage`.
-- Vercel domain API confirms `home.admate.ai.kr` belongs to `admate-homepage`.
-- `admate-homepage-al13` retains only its default Vercel domain and is a deletion candidate.
+- Vercel Git linked repo labels for Compass, Lens, and Agent Core may still show historical repository names or redirects.
+- Do not reconnect Vercel projects as part of docs cleanup. Reconnection belongs in a separate Vercel verification gate with production smoke after the next deployment.
+- Keep legacy Guide deployment/redirect decisions as a product-routing follow-up, not a central docs path cleanup item.
 
 ### 3.3 Supabase
 
-| Current Supabase Project | Observed Role | Target Display Name | Risk |
+| Current Display Name | Historical Display Name | Observed Role | Safety Rule |
 |---|---|---|---|
-| `Admate-Vision` | Main shared production DB for Compass/Openclaw/Sentinel/Auth/Intelligence and related schemas | `AdMate-Data-Core` | Display rename should be safe, but project ref/URL must remain unchanged. |
-| `Admate_AI_MMP` | Non-production dry-run target used for Intelligence Library schema rehearsal | `AdMate-Dryrun-MMP` or keep as-is | Rename optional; avoid confusion with production. |
-| `Ad-Planner AI` | Legacy Foresight/Planner DB candidate | `AdMate-Foresight-Legacy` | Read-only inventory still incomplete. Do not migrate/rename until inventory is done. |
+| `AdMate-Data-Core` | `Admate-Vision` | Main shared production DB for Compass, Agent Core/Sentinel, Auth, Intelligence, and related schemas | Display name only. Project ref, API URL, credentials, schemas, and data must remain unchanged. |
+| `Admate_AI_MMP` or future `AdMate-Dryrun-MMP` | same | Non-production dry-run target used for Intelligence Library schema rehearsal | Rename optional; avoid confusion with production. |
+| `Ad-Planner AI` or future `AdMate-Foresight-Legacy` | same | Legacy Foresight/Planner DB candidate | Inventory remains incomplete. Do not migrate or rename until reviewed. |
 
-Supabase display-name changes are generally safer than GitHub/Vercel/local folder renames because project refs and URLs usually remain stable. Still, update internal docs after any display-name change to avoid human confusion.
+Supabase display-name changes are safer than GitHub/Vercel/local folder renames because project refs and URLs usually remain stable. Still, AdMate docs must explicitly say that display-name cleanup does not change application configuration values.
 
 ### 3.4 Codex And Obsidian
 
-Current Codex project labels shown by user include:
-
-- Command Center / `admate-docs`
-- openclaw / `openclaw-monitor`
-- Compass / `Jhongjin-admate-guide-codex`
-- Lens / `admate-capture-pro`
-- homepage / `admate-homepage`
-- AdMate Foresight
-- Ad-Sentinel
-- AdMate Creative Studio Agent
-- Design Director Agent
-
-Target Codex/local names should match target local folders:
+Target Codex/local names should match canonical local folders:
 
 - `admate-docs`
-- `admate-agent-core`
+- `admate-homepage`
 - `admate-compass`
 - `admate-lens`
-- `admate-homepage`
+- `admate-agent-core`
 - `admate-foresight`
-- `admate-sentinel-legacy`
 - `admate-creative-studio`
 - `admate-design-director`
+- `admate-sentinel-legacy`
 
-Obsidian vault target after local root consolidation:
+Obsidian vault target:
 
 ```text
 D:\Projects\AdMate\admate-docs
 ```
 
-Do not create a C-drive vault or duplicate docs folder.
+Do not create a C-drive vault or duplicate docs folder. `.obsidian/` is local vault configuration and should not be staged or committed unless a future gate explicitly changes that rule.
 
 ---
 
 ## 4. Recommended Execution Order
 
-### Gate Rename-1: Planning And Inventory
+### Completed Gates
 
-Status: this document.
-
-Scope:
-
-- Write canonical naming map.
-- Mark rename/delete/archive candidates.
-- No external mutation.
-- No GitHub rename.
-- No Vercel rename/delete.
-- No Supabase rename.
-- No local folder rename.
-
-### Gate Rename-2: Homepage Duplicate Cleanup
-
-Scope:
-
-- Confirm `home.admate.ai.kr` is attached to `admate-homepage`.
-- Confirm `admate-homepage-al13` has no custom domain and no unique env/deployment dependency.
-- Delete `admate-homepage-al13` from Vercel only after final UI check.
-
-Do not delete if:
-
-- `home.admate.ai.kr` reappears under `admate-homepage-al13`.
-- production smoke fails.
-- another custom domain is attached.
-
-### Gate Rename-3: Supabase Display Names
-
-Scope:
-
-- Rename `Admate-Vision` display name to `AdMate-Data-Core`.
-- Optionally rename `Admate_AI_MMP` to `AdMate-Dryrun-MMP`.
-- Do not change project ref, URL, database password, API keys, or connection strings.
-- Update docs references after screenshots/confirmation.
-
-Recommended first change:
-
-```text
-Admate-Vision -> AdMate-Data-Core
-```
-
-### Gate Rename-4: GitHub Repo Rename, Low-Risk Docs/Support Repos
-
-Start with non-production or low-runtime repos:
-
-| Current | Target |
+| Gate | Status |
 |---|---|
-| `Design-Director-Agent` | `admate-design-director` |
-| `AdMate Creative Studio Agent` local only | `admate-creative-studio` local folder already has canonical GitHub remote |
+| Rename-1 Planning And Inventory | Completed. |
+| Rename-2 Homepage Duplicate Cleanup | Completed. |
+| Rename-3 Supabase Display Rename | Completed for main shared display name. |
+| Rename-4 Local Root Consolidation | Completed with copy fallback for previously locked folders. |
+| Rename-5 Local Remote And Vercel Metadata Sync | Completed where external names were canonical. |
+| Rename-6 Post-Rename Verification | Completed with production smoke recorded for homepage, Compass, Lens, and Sentinel domains. |
 
-For each repo:
+### Current Docs Gate
 
-1. Confirm local status clean.
-2. Rename GitHub repo in GitHub UI.
-3. Update local remote:
+Gate Docs-Canonical-1:
 
-```powershell
-git remote set-url origin https://github.com/Jhongjin/<target-repo>.git
-git remote -v
-git fetch origin
-git status --short
-```
+- Update active central docs to use `D:\Projects\AdMate` as the canonical root.
+- Update active central docs to use canonical repo names and GitHub slugs.
+- Preserve historical task/result documents and `archive/` originals.
+- Leave Vercel Git linked repo label verification as a future follow-up.
+- Do not modify product repos, DB/API/env configuration, or deployment settings.
 
-4. Update docs references in `admate-docs`.
+### Next Operational Gate Candidates
 
-### Gate Rename-5: GitHub Repo Rename, Product Runtime Repos
-
-Proceed one at a time:
-
-| Product | Current GitHub | Target GitHub | Notes |
-|---|---|---|---|
-| Compass | `Jhongjin-admate-guide-codex` | `admate-compass` | Vercel project already named `admate-compass`; update linked repo after GitHub rename. |
-| Lens | `admate-capture-pro` | `admate-lens` | Current local branch is not main; resolve branch status first. |
-| Agent Core | `openclaw-monitor` | `admate-agent-core` | Highest blast radius. Do after Compass/Lens. |
-| Ad-Sentinel legacy | `AdMate-Sentinel` | `admate-sentinel-legacy` | Only after confirming it is no longer active production. |
-
-### Gate Rename-6: Vercel Project Rename And Link Check
-
-Vercel projects already canonical:
-
-- `admate-homepage`
-- `admate-compass`
-- `admate-lens`
-- `admate-foresight`
-
-Vercel rename candidates:
-
-| Current | Target |
-|---|---|
-| `openclaw-monitor` | `admate-agent-core` |
-| `admate-guide` | archive or legacy |
-
-After each Vercel change:
-
-- Confirm custom domain still works.
-- Confirm GitHub repo link still points to correct repo.
-- Confirm `.vercel/project.json` still has the same project ID or is intentionally relinked.
-- Run production smoke.
-
-### Gate Rename-7: Local Folder Rename
-
-Only after GitHub/Vercel names are stable.
-
-Suggested PowerShell approach:
-
-```powershell
-Rename-Item -LiteralPath "D:\Projects\Jhongjin-admate-guide-codex" -NewName "admate-compass"
-Rename-Item -LiteralPath "D:\Projects\admate-capture-pro" -NewName "admate-lens"
-Rename-Item -LiteralPath "D:\Projects\openclaw-monitor" -NewName "admate-agent-core"
-Rename-Item -LiteralPath "D:\Projects\AdMate Foresight" -NewName "admate-foresight"
-Rename-Item -LiteralPath "D:\Projects\AdMate Creative Studio Agent" -NewName "admate-creative-studio"
-Rename-Item -LiteralPath "D:\Projects\Design Director Agent" -NewName "admate-design-director"
-```
-
-Do not run this blindly. Before each rename:
-
-- Confirm no dev server is running from the old path.
-- Confirm Git working tree state.
-- Confirm no editor has unsaved files.
-- Confirm Obsidian vault remains `D:\Projects\admate-docs`.
-
-### Gate Rename-8: Documentation And Codex Project Cleanup
-
-Update references:
-
-- `admate-docs`
-- product repo `AGENTS.md`
-- README files
-- handoff docs
-- Obsidian links if any absolute paths exist
-- Codex project labels by reopening the canonical local folders
-
-Old Codex project entries can be removed only after the canonical folders are opened and verified.
+1. Vercel Git linked repo verification and dashboard reconnection for Compass, Lens, and Agent Core.
+2. Product repo `AGENTS.md` sync from this central canonical map.
+3. Legacy Guide and Sentinel Legacy routing/archive decision review.
 
 ---
 
@@ -348,18 +218,30 @@ Do not delete local folders during rename cleanup. Rename first, verify, then ar
 
 ## 6. Current Recommendation
 
-Proceed in this order:
+Current canonical root:
 
-1. Commit this naming plan to `admate-docs`.
-2. Finish Vercel duplicate cleanup for `admate-homepage-al13`. Completed on 2026-05-07.
-3. Rename Supabase display `Admate-Vision` to `AdMate-Data-Core`. Completed on 2026-05-07 by dashboard display rename.
-4. Rename Design Director GitHub/local naming to `admate-design-director`.
-5. Rename Creative Studio local folder to `admate-creative-studio`.
-6. Rename Compass GitHub/local to `admate-compass`.
-7. Rename Lens GitHub/local to `admate-lens` after branch state is safe.
-8. Rename Openclaw/Sentinel repo/project only after a dedicated Agent Core naming review.
+```text
+D:\Projects\AdMate
+```
 
-The most important decision is to treat `admate-agent-core` as the canonical technical name for the Openclaw/Hermes/Sentinel/Auth/Intelligence backend repo, while keeping the public-facing product name `AdMate Sentinel` for the monitoring/validation surface.
+Current central docs / Obsidian vault:
+
+```text
+D:\Projects\AdMate\admate-docs
+```
+
+Use the canonical local folders and GitHub slugs in active planning, handoff, prompt, and Command Center documents. Leave historical task/result documents and `archive/` originals unchanged.
+
+Remaining naming work should proceed in this order:
+
+1. Verify and, if needed, reconnect Vercel Git linked repo labels for Compass, Lens, and Agent Core in a dedicated Vercel gate.
+2. Sync product repo `AGENTS.md` files with the central canonical map.
+3. Decide legacy Guide redirect/archive handling.
+4. Decide Sentinel Legacy long-term archival scope.
+
+The most important decision remains: treat `admate-agent-core` as the canonical technical name for the Openclaw/Hermes/Sentinel/Auth/Intelligence backend repo, while keeping the public-facing product name `AdMate Sentinel` for the monitoring/validation surface.
+
+The rename execution log below intentionally preserves historical paths and names as evidence of what changed over time.
 
 ---
 
