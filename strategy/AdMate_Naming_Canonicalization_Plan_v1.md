@@ -351,8 +351,8 @@ Do not delete local folders during rename cleanup. Rename first, verify, then ar
 Proceed in this order:
 
 1. Commit this naming plan to `admate-docs`.
-2. Finish Vercel duplicate cleanup for `admate-homepage-al13`.
-3. Rename Supabase display `Admate-Vision` to `AdMate-Data-Core`.
+2. Finish Vercel duplicate cleanup for `admate-homepage-al13`. Completed on 2026-05-07.
+3. Rename Supabase display `Admate-Vision` to `AdMate-Data-Core`. Completed on 2026-05-07 by dashboard display rename.
 4. Rename Design Director GitHub/local naming to `admate-design-director`.
 5. Rename Creative Studio local folder to `admate-creative-studio`.
 6. Rename Compass GitHub/local to `admate-compass`.
@@ -360,3 +360,39 @@ Proceed in this order:
 8. Rename Openclaw/Sentinel repo/project only after a dedicated Agent Core naming review.
 
 The most important decision is to treat `admate-agent-core` as the canonical technical name for the Openclaw/Hermes/Sentinel/Auth/Intelligence backend repo, while keeping the public-facing product name `AdMate Sentinel` for the monitoring/validation surface.
+
+---
+
+## 7. Rename Execution Log
+
+### 2026-05-07 - Rename-2 Homepage Duplicate Cleanup
+
+Operator action: user deleted the duplicate Vercel project `admate-homepage-al13`.
+
+Verification:
+
+- Vercel project list shows only `admate-homepage` for homepage.
+- `home.admate.ai.kr` is attached to Vercel project `admate-homepage`.
+- `home.admate.ai.kr` returns HTTP 200.
+- Canonical local folder remains `D:\Projects\admate-homepage`.
+- Canonical GitHub repo remains `Jhongjin/admate-homepage`.
+
+Result:
+
+- `admate-homepage-al13` is retired.
+- No further homepage duplicate cleanup is needed.
+
+### 2026-05-07 - Rename-3 Supabase Display Rename
+
+Operator action: user renamed Supabase project display name from `Admate-Vision` to `AdMate-Data-Core`.
+
+Verification note:
+
+- This was a Supabase dashboard display-name operation.
+- No Supabase project ref, API URL, connection string, database credential, schema, or data migration was changed by this naming plan.
+- Application configuration should continue to use the existing project ref/URL values.
+
+Result:
+
+- Main shared production data project should now be referred to as `AdMate-Data-Core`.
+- Old name `Admate-Vision` should remain only in historical docs or migration notes.
