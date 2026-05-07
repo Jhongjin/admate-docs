@@ -157,10 +157,10 @@ Target Codex/local names should match target local folders:
 - `admate-creative-studio`
 - `admate-design-director`
 
-Obsidian vault should remain:
+Obsidian vault target after local root consolidation:
 
 ```text
-D:\Projects\admate-docs
+D:\Projects\AdMate\admate-docs
 ```
 
 Do not create a C-drive vault or duplicate docs folder.
@@ -396,3 +396,40 @@ Result:
 
 - Main shared production data project should now be referred to as `AdMate-Data-Core`.
 - Old name `Admate-Vision` should remain only in historical docs or migration notes.
+
+### 2026-05-07 - Rename-4 Local Root Consolidation
+
+Operator action: created `D:\Projects\AdMate` and moved canonical AdMate working repos under that root where Windows file locks allowed it.
+
+Moved successfully:
+
+- `D:\Projects\AdMate\admate-homepage`
+- `D:\Projects\AdMate\admate-compass`
+- `D:\Projects\AdMate\openclaw-monitor`
+- `D:\Projects\AdMate\admate-foresight`
+- `D:\Projects\AdMate\admate-creative-studio`
+- `D:\Projects\AdMate\admate-design-director`
+- `D:\Projects\AdMate\admate-sentinel-legacy`
+
+Local folder names normalized during the move:
+
+- `AdMate Foresight` -> `admate-foresight`
+- `Ad-Sentinel` -> `admate-sentinel-legacy`
+
+Pending due to Windows file locks:
+
+- `D:\Projects\admate-docs` -> `D:\Projects\AdMate\admate-docs`
+- `D:\Projects\admate-capture-pro` -> `D:\Projects\AdMate\admate-capture-pro`
+
+Notes:
+
+- The current Codex thread and/or Obsidian may be holding `admate-docs`.
+- `admate-capture-pro` may be held by a local process, editor, or file watcher.
+- No forced deletion, cleanup, or copy workaround was performed.
+- Existing duplicate folder `D:\Projects\AdMate Creative Studio Agent` was left in place for a later cleanup gate because the canonical folder `D:\Projects\AdMate\admate-creative-studio` already exists.
+
+Verification:
+
+- Git remotes were preserved in moved folders.
+- Vercel `.vercel/project.json` files remained present for moved Vercel-linked projects.
+- Known unrelated dirty worktrees remained dirty but were not modified by the move.
