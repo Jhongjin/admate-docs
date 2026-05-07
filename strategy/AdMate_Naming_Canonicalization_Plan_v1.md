@@ -433,3 +433,40 @@ Verification:
 - Git remotes were preserved in moved folders.
 - Vercel `.vercel/project.json` files remained present for moved Vercel-linked projects.
 - Known unrelated dirty worktrees remained dirty but were not modified by the move.
+
+### 2026-05-07 - Rename-4B Copy Fallback For Locked Folders
+
+Operator action: copied locked source folders into the new AdMate root instead of moving them. The old folders were intentionally left in place for later manual cleanup.
+
+Copied successfully:
+
+- `D:\Projects\admate-docs` -> `D:\Projects\AdMate\admate-docs`
+- `D:\Projects\admate-capture-pro` -> `D:\Projects\AdMate\admate-lens`
+
+Copy exclusions:
+
+- `node_modules`
+- `.next`
+- `.turbo`
+- `dist`
+- `build`
+- `coverage`
+- `.cache`
+- log files
+- TypeScript build info files
+
+Verification:
+
+- `D:\Projects\AdMate\admate-docs` keeps remote `Jhongjin/admate-docs`.
+- `D:\Projects\AdMate\admate-docs` includes the copied Obsidian vault settings.
+- `D:\Projects\AdMate\admate-lens` keeps Git history from the Lens source folder.
+- `D:\Projects\AdMate\admate-lens` currently still points to GitHub remote `Jhongjin/admate-capture-pro`.
+- `D:\Projects\AdMate\admate-lens` keeps Vercel project ID `prj_cAd0JHyVm4IBhM2Q0pE4LxesVbZ7`.
+- `D:\Projects\AdMate\admate-lens` currently still has `.vercel/project.json` project name `admate-capture-pro`.
+
+Follow-up:
+
+- Open Obsidian vault from `D:\Projects\AdMate\admate-docs`.
+- Open Codex projects from the new `D:\Projects\AdMate\...` paths.
+- Do not delete `D:\Projects\admate-docs` or `D:\Projects\admate-capture-pro` until the user manually confirms the new paths are working.
+- Rename Lens GitHub remote/project references in a later Lens rename gate.
