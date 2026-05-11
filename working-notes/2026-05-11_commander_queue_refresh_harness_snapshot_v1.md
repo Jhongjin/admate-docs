@@ -80,4 +80,3 @@ This gate does not perform:
 - screenshot or asset generation
 - secret, env, token, cookie, session, credential, signed URL, raw code, raw IP,
   or raw provider output
-
