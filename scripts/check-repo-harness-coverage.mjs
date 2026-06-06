@@ -17,6 +17,7 @@ const repos = [
       'scripts/check-doc-index.mjs',
       'scripts/check-skill-catalog.mjs',
       'scripts/check-repo-harness-coverage.mjs',
+      'scripts/check-cross-repo-prelaunch-local-matrix.mjs',
     ],
   },
   {
