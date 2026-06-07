@@ -24,6 +24,12 @@
 - `npm run smoke:daily-review`
 - `npm run smoke:access-requests`
 - `npm run readback:sentinel-prelaunch-model-a-direct-sql-post`
+- n8n local CLI import/readback:
+  - `Sentinel Core Prelaunch Workflow Producer`
+  - `Campaign Status Monitor`
+  - `Sentinel Core Prelaunch Gate CLI Smoke V2`
+- n8n local CLI activation/readback for `Sentinel Core Prelaunch Workflow Producer`: active `1`, then final active `0`.
+- n8n local CLI activation/execution/readback for `Sentinel Core Prelaunch Gate CLI Smoke V2`: active `1`, execution delta `1`, then final active `0`.
 
 ### Fixes Applied
 
@@ -41,7 +47,8 @@
 
 ### Blocked
 
-- n8n import/save/activation/execution: no repo runner or callable n8n UI/API session is available in this environment. Static n8n gates passed; actual import/activation/execution remains an external n8n console/API operation.
+- n8n external ingest execution remains gated: the scheduled producer is not directly CLI-startable without an `Execute Workflow Trigger`, and the environment does not have the `Openclaw Ingest Key` credential label. No external ingest call was made.
+- n8n UI/API console operation remains unverified because no callable n8n web UI/API session was available; local CLI import/activation/execution smoke passed as noted above.
 - `npm run smoke:command-center-input`: blocked before write because production data has no non-admin project owner fixture for the owner-permission path.
 - `npm run smoke:account-lifecycle`: access request approval passed, but Auth invite returned the bounded `auth_invite_failed` 502 path from Supabase Auth invite delivery/config. Active artifacts were cleaned up.
 - Direct SQL post-readback passed SELECT-only safety checks, but expected delta did not match because no n8n one-time execution was performed in this run.
@@ -54,12 +61,15 @@
 - `npm run verify:harness`
 - Local dev-server smoke: `npm run smoke:command-center`
 - Local dev-server state smoke: `npm run smoke:command-center:states`
+- Remote Homepage URL probe: `https://home.admate.ai.kr/command-center` returned HTTP 200.
+- Remote Homepage smoke: `COMMAND_CENTER_SMOKE_ALLOW_REMOTE=1` with `https://home.admate.ai.kr/command-center` passed.
+- Vercel production env list showed Homepage has `OPENCLAW_MONITOR_URL` and `COMMAND_CENTER_READ_KEY`.
+- Vercel production env list showed Agent Core has `COMMAND_CENTER_READ_KEY`.
 
 ### Blocked
 
-- Homepage live URL/read-key pair was not available in repo env.
-- Candidate remote URLs for `/command-center` did not become reachable during smoke checks.
-- Live API contract check remains blocked until a reachable Homepage URL and approved Command Center read key are provisioned.
+- Homepage live API readback remains blocked by read-key visibility/pair verification. Local Core read key against `https://sentinel.admate.ai.kr/api/public/command-center` returned 401, and production secret values were not available for safe equality/probe through the current CLI workflow.
+- Other URL candidates remained unusable: `https://admate.ai.kr/command-center`, `https://www.admate.ai.kr/command-center`, and `https://homepage.admate.ai.kr/command-center`.
 
 ## Lens
 
@@ -69,11 +79,14 @@
 - `npm run verify:offline-smoke`
 - `npm run verify:prelaunch-local`
 - `npm run harness:report`
+- Live Lens URL probe: `https://lens.admate.ai.kr/` redirected to `/login?next=%2F`.
+- Unauthenticated production API probes returned 401 for `/api/account/me`, `/api/captures`, `/api/captures/execute`, and `/api/upload`.
+- Vercel production env list showed Lens has `ADMATE_LENS_HANDOFF_SECRET`, Supabase env, Browserbase env, and capture-related provider env.
 
 ### Blocked
 
-- Live capture/upload could not be executed because the repo has no package runner for authenticated upload/capture/execute/readback cleanup.
-- Lens live env names for Supabase/session/handoff/Browserbase/YouTube were not configured in this repo env.
+- Live capture/upload could not be executed in this browser context because no human-authenticated Lens session or account password was available.
+- Direct standalone upload/capture mutation was not run. The remaining gate is a human login/session handoff or an official Core handoff-issued session.
 
 ## Foresight
 
@@ -83,11 +96,21 @@
 - `npm run benchmark:dry-run`
 - `npm run benchmark:ui-fixtures`
 - `npm run check:protected-error-states`
+- Production preflight SQL `docs/sql/2026-05-08_foresight_benchmark_production_preflight.sql` was run as SELECT-only direct SQL.
+- Preflight summary:
+  - `foresight_schema_count`: 0
+  - `existing_draft_table_count`: 0
+  - `existing_foresight_object_inventory`: 0
+  - `existing_foresight_policy_residue`: 0
+  - `existing_foresight_grant_residue`: 0
+  - extensions available: `pgcrypto`, `uuid-ossp`
+  - recommended action: production preflight review required before migration runbook
+- Vercel production env list showed Foresight has handoff/session and Supabase env.
 
 ### Blocked
 
-- SQL Editor apply/import is manual-only in the runbook; no repo package runner applies the production schema.
-- Supabase/Foresight import env names were not configured in this repo env.
+- SQL Editor apply/import remains blocked by the schema file itself: `2026-05-07_foresight_benchmark_schema_draft.sql` is marked `REVIEW ONLY. DO NOT EXECUTE.`
+- The approved next step is a migration runbook, not applying the draft schema directly.
 - Legacy `scripts/upload_to_supabase.py` remains unsuitable as a normalized benchmark production import runner without disposable target/backup/delete predicate.
 
 ## Creative Studio
@@ -97,15 +120,17 @@
 - `npm run check:creative-studio-prelaunch-readiness`
 - `npm run check:creative-studio-safety-static`
 - `npm run verify:prelaunch-local`
+- Confirmed no Vercel project link and no local env file at repo root.
 
 ### Blocked
 
 - No repo runner exists for media generation, provider upload, Instagram publish, or platform readback.
 - Media/social provider env names checked in this repo env were absent.
-- Actual production/publish remains a human-operated brand/legal/security/account-owner gate.
+- Actual production/publish remains a human-operated brand/legal/security/account-owner/platform gate with a concrete brief and target account.
 
 ## Notes
 
 - Several parallel `npm run` invocations on Windows produced silent or `cmd.exe` spawn false negatives. Affected checks were rerun serially and passed where noted.
 - Homepage local dev server was started only for smoke verification and confirmed stopped afterward.
 - No production campaign apply/promote/publish runner was found or executed.
+- A local n8n sqlite backup was created before workflow import; imported n8n smoke workflows were left inactive.
