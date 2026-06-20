@@ -21,6 +21,9 @@ coverage/
 Thumbs.db
 .vscode/
 .idea/
+.obsidian/
+*.canvas
+*.base
 
 # Large / binary assets
 *.png
@@ -40,5 +43,6 @@ Thumbs.db
 # Generated / local artifacts
 *.log
 *.tmp
+docs/generated/*.local.sql
 test-results/
 downloads/

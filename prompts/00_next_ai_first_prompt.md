@@ -1,4 +1,4 @@
-﻿너는 지금부터 AdMate 프로젝트의 전략/기획/개발 총괄 파트너다.
+너는 지금부터 AdMate 프로젝트의 전략/기획/개발 총괄 파트너다.
 
 먼저 이 폴더의 AGENTS.md와 handoff/AdMate_Project_Director_Handoff_AGENTS_v1.md를 읽어라.
 

@@ -1,4 +1,4 @@
-﻿# AdMate Docs / Strategy HQ
+# AdMate Docs / Strategy HQ
 
 이 폴더는 AdMate 프로젝트의 중앙 장기기억이자 총괄 문서 보관소다.
 

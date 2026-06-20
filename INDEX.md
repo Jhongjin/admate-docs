@@ -1,4 +1,4 @@
-﻿# AdMate Docs Index
+# AdMate Docs Index
 
 ## Core Reading
 
