@@ -14,7 +14,7 @@ AdMate agents should not scan the whole `D:\Projects\AdMate` workspace by defaul
 |---|---|
 | Cross-product coordination | `D:\Projects\AdMate\admate-commander` |
 | Compass policy/RAG/answer quality | `D:\Projects\AdMate\admate-compass` |
-| Sentinel, Openclaw, Hermes, monitoring, security workflow | `D:\Projects\AdMate\admate-agent-core` |
+| Sentinel, Openclaw, Hermes, monitoring, security workflow | `D:\Projects\AdMate\admate-agent-core` plus `docs\agents\agent-core-role-routing.md` |
 | Lens capture/evidence generation | `D:\Projects\AdMate\admate-lens` |
 | Foresight prediction/planning/statistics | `D:\Projects\AdMate\admate-foresight` |
 | Design and UI/UX governance | `D:\Projects\AdMate\admate-design-director` |
