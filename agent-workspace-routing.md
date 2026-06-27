@@ -22,17 +22,19 @@ AdMate agents should not scan the whole `D:\Projects\AdMate` workspace by defaul
 | Creative tools | `D:\Projects\AdMate\admate-creative-studio` |
 | Canonical docs | `D:\Projects\AdMate\admate-docs` |
 
-## Move Candidates
+## Archived Workspace Noise
 
-Do not move these without explicit approval:
+Archived on 2026-06-27 after user approval:
 
-- `.tmp`
-- `qa-browser-profiles`
-- `백업.docx`
-- `.playwright-mcp`
-- `.external`
-- `lua`
-- `sentinel_supabase_db_files`
+- `D:\Projects\AdMate-archive\2026-06-27-workspace-cleanup\.tmp`
+- `D:\Projects\AdMate-archive\2026-06-27-workspace-cleanup\qa-browser-profiles`
+- `D:\Projects\AdMate-archive\2026-06-27-workspace-cleanup\백업.docx`
+- `D:\Projects\AdMate-archive\2026-06-27-workspace-cleanup\.playwright-mcp`
+- `D:\Projects\AdMate-archive\2026-06-27-workspace-cleanup\.external`
+- `D:\Projects\AdMate-archive\2026-06-27-workspace-cleanup\lua`
+- `D:\Projects\AdMate-archive\2026-06-27-workspace-cleanup\sentinel_supabase_db_files`
+
+Do not delete archived files without explicit approval.
 
 Treat `admate-sentinel-legacy` as legacy reference only unless explicitly requested.
 
