@@ -22,6 +22,27 @@ AdMate agents should not scan the whole `D:\Projects\AdMate` workspace by defaul
 | Creative tools | `D:\Projects\AdMate\admate-creative-studio` |
 | Canonical docs | `D:\Projects\AdMate\admate-docs` |
 
+## Shared Agent Core Branches
+
+`admate-agent-core` is one shared repo for Sentinel, Openclaw, Hermes, Security, Command Center, Paperclip, and Slack operations. Do not split it into new repos unless Commander explicitly approves a future architecture change.
+
+Use role-specific branch prefixes:
+
+- `feature/sentinel-monitoring/`
+- `feature/sentinel-mediamix/`
+- `feature/openclaw/`
+- `feature/hermes/`
+- `feature/security/`
+- `feature/command-center/`
+- `feature/paperclip/`
+- `feature/slack-ops/`
+
+The detailed routing and prompt templates live in:
+
+```text
+D:\Projects\AdMate\admate-agent-core\docs\agents\agent-core-role-routing.md
+```
+
 ## Archived Workspace Noise
 
 Archived on 2026-06-27 after user approval:
